@@ -1,33 +1,10 @@
 <html>
     <head>
         <title>Backbone Test</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script src="lib/underscore.js" type="text/javascript"></script>
-        <script src="lib/backbone.js" type="text/javascript"></script>
-        
-        <script src="models/task.js" type="text/javascript"></script>
-        <script src="models/taskList.js" type="text/javascript"></script>
-        <script src="models/project.js" type="text/javascript"></script>
-        <script src="models/projectList.js" type="text/javascript"></script>
-
-        <script src="views/projectView.js" type="text/javascript"></script>
-        
-        <script src="app.js" type="text/javascript"></script>
+        <script data-main="main" src="lib/require.js"></script>
     </head>
     <body>
         <div id="main" />
-        <script type="text/template" id="project_list">
-            <div class="field_label">Project Name</div>
-            <div class="field_input">
-                <input type="text" id="project_name" /><input type="button" id="add" value="Add Project" />
-            </div>
-            <div>
-                <ul id="project-list"></ul>
-            </div>
-        </script>
-        <script type="text/template" id="project_item">
-            <li><%= project_name %></li>
-        </script>
     </body>
 </html>
 
