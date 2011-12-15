@@ -7,7 +7,7 @@ define([
   'models/project',
   'models/projectlist'
 ], function($, _, Backbone, projectListTemplate, projectItemTemplate, Project, ProjectList){
-    ProjectView = Backbone.View.extend({
+    ProjectListView = Backbone.View.extend({
         el : $('#main'),
         events: {
             "keyup #project_name": "detectNewProjectEnter",
@@ -51,6 +51,6 @@ define([
         }
     });
 
-    return ProjectView;
+    return ProjectListView;
 });
 

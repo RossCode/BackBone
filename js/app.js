@@ -5,14 +5,14 @@ define([
   'text!templates/projectList.html',
   'text!templates/projectItem.html',
   'models/projectlist',
-  'views/projectView'
+  'views/projectListView'
 ], function($, _, Backbone, projectListTemplate, projectItemTemplate, ProjectList, ProjectView){
     var App = {
         Views : {},
         Projects : null,
         init : function() {
             App.Projects = new ProjectList();
-            App.Views.ProjectView = new ProjectView({
+            App.Views.ProjectListView = new ProjectListView({
                 collection : App.Projects
             });
         }
