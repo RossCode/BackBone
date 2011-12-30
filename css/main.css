@@ -1,0 +1,20 @@
+#projectList {
+	float: left;
+	width: 200px;
+}
+
+#projectList ul {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+#projectList li.selected {
+	font-weight:bold;
+}
+
+#project {
+	float: right;
+	margin-left: 200px;
+}

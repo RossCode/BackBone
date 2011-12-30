@@ -4,7 +4,7 @@ define([
 ], function(Backbone, TaskList){
     Project = Backbone.Model.extend({
         defaults: {
-            name: null,
+            projectName: null,
             tasks: new TaskList()
         }
     });

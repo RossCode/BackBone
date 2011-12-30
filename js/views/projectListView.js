@@ -3,25 +3,30 @@ define([
   'underscore', 
   'backbone',
   'text!templates/projectList.html',
-  'text!templates/projectItem.html',
   'models/project',
-  'models/projectlist'
-], function($, _, Backbone, projectListTemplate, projectItemTemplate, Project, ProjectList){
+  'models/projectlist',
+  'views/projectItemView'
+], function($, _, Backbone, projectListTemplate, Project, ProjectList, ProjectItemView){
     ProjectListView = Backbone.View.extend({
-        el : $('#main'),
+        el : $('#projectList'),
         events: {
             "keyup #project_name": "detectNewProjectEnter",
             "click #add": "addProject"
         },
 
-        initialize : function() {
+        initialize : function(options) {
+        	this.eventManager = options.eventManager,
             this.collection.bind('add', this.addProjectToView, this);
+            this.eventManager.bind("projectClicked", this.projectClicked)
+            
             this.render();
         },
 
-        template : _.template(projectListTemplate),
-
-        item_template_html : projectItemTemplate,
+		projectClicked: function(project) {
+			alert("project clicked: " + project.get('projectName'));
+		},
+		
+		template : _.template(projectListTemplate),
 
         render : function(){
             $(this.el).html(this.template);
@@ -38,16 +43,21 @@ define([
 
         addProject : function() {
             var nameField = $("#project_name");
-            var project = new Project({name : nameField.val()});
+            var project = new Project({ 
+            	projectName : nameField.val(),
+            	id : this.collection.length + 1 
+           	});
             this.collection.add(project);
             nameField.val("");
             nameField.focus();
         },
 
         addProjectToView : function(project) {
-            var name = { project_name : project.get('name') };
-            var itemTemplate = _.template(this.item_template_html, name);
-            $('#project-list').append(itemTemplate);
+            var itemView = new ProjectItemView({
+            	model: project,
+            	eventManager: this.eventManager
+           	});
+            $('#project-list').append(itemView.render().el);
         }
     });
 
