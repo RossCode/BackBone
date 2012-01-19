@@ -1,0 +1,34 @@
+body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+#projectList {
+	float: left;
+	width: 200px;
+}
+
+#projectList ul {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+#projectList li.selected {
+	font-weight:bold;
+}
+
+#project {
+	float: left;
+}
