@@ -26,6 +26,7 @@ define([
             $(this.el).html(this.template(projectInfo));
             this.model.tasks = new TaskList();
             this.model.tasks.parent = this.model;
+            this.model.tasks.fetch();
             var taskListView = new TaskListView({
                 eventManager: this.eventManager,
                 collection: this.model.tasks,

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 namespace PM.Models
 {
@@ -6,6 +7,7 @@ namespace PM.Models
     {
         public int id { get; set; }
         public string projectName { get; set; }
+        [ScriptIgnore]
         public List<Task> tasks { get; set; }
 
         public Project()

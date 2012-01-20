@@ -25,17 +25,17 @@ namespace PM
                 {
                     var projectList = new List<Project>
                                           {
-                                              new Project {id = 1, projectName = "Project 1"},
-                                              new Project {id = 2, projectName = "Project 2"},
-                                              new Project {id = 3, projectName = "Project 3"}
+                                              new Project {id = 1, projectName = "Trackabout"},
+                                              new Project {id = 2, projectName = "Tourneytopia"},
+                                              new Project {id = 3, projectName = "Pay It Square"}
                                           };
 
                     var project = projectList.First();
                     project.tasks = new List<Task>
                                         {
-                                            new Task {id = 1, description = "Task 1", title = "title task 1", isCompleted = false, priority = 1, project = project},
-                                            new Task {id = 2, description = "Task 2", title = "title task 2", isCompleted = false, priority = 2, project = project},
-                                            new Task {id = 3, description = "Task 3", title = "title task 3", isCompleted = false, priority = 3, project = project},
+                                            new Task {id = 1, description = "change vb.net to c#", title = "Migrate Code", isCompleted = true, priority = 1, project = project},
+                                            new Task {id = 2, description = "implement compact framework actions", title = "CF.NET Work", isCompleted = false, priority = 2, project = project},
+                                            new Task {id = 3, description = "perform billable work", title = "Billable Work", isCompleted = false, priority = 3, project = project},
                                         };
 
                     HttpContext.Current.Cache.Add("Projects", projectList, null, DateTime.MaxValue, new TimeSpan(10, 0, 0, 0), CacheItemPriority.Normal, null);

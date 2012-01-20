@@ -1,4 +1,13 @@
-﻿    <td><%= title %></td>
+﻿<%
+var isCompletedText;
+if (isCompleted) {
+    isCompletedText = "YES!!!";
+} else {
+    isCompletedText = "No";
+}
+%>    
+
+    <td><%= title %></td>
     <td><%= description %></td>
     <td><%= priority %></td>
-    <td></td>
+    <td><%= isCompletedText %></td>
