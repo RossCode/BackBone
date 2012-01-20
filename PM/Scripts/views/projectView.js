@@ -29,7 +29,7 @@ define([
             this.model.tasks.fetch();
             var taskListView = new TaskListView({
                 eventManager: this.eventManager,
-                collection: this.model.tasks,
+                collection: this.model.tasks
             });
 
             $("#tasks").html(taskListView.render().el);
@@ -39,7 +39,6 @@ define([
         close: function () {
             $(this.el).unbind();
             $(this.el).empty();
-            //this.eventManager.trigger("projectDestroyed");
         },
 
         deleteProject: function () {

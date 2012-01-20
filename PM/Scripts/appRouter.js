@@ -14,7 +14,6 @@ define([
 
         init: function () {
             this.eventManager = _.extend({}, Backbone.Events);
-            this.eventManager.bind("projectDestroyed", "navigateToList");
         },
 
         navigateToList: function () {

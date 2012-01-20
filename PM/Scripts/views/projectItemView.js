@@ -15,7 +15,6 @@ define([
 		},
 		
 		projectClicked : function() {
-			this.eventManager.trigger("projectClicked", this.model);
 			$(this.el).addClass("selected");
 		},
 		
