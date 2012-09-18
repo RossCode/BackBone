@@ -6,8 +6,8 @@ define([
   'models/project',
   'models/TaskList',
   'views/taskListView'
-], function ($, _, Backbone, projectTemplate, Project, TaskList, TaskListView) {
-    ProjectView = Backbone.View.extend({
+], function ($, _, backbone, projectTemplate, project, taskList, taskListView) {
+    var projectView = backbone.View.extend({
         el: $("#project"),
 
         template: _.template(projectTemplate),
@@ -24,15 +24,15 @@ define([
         render: function () {
             var projectInfo = { project_name: this.model.get('projectName') };
             $(this.el).html(this.template(projectInfo));
-            this.model.tasks = new TaskList();
+            this.model.tasks = new taskList();
             this.model.tasks.parent = this.model;
             this.model.tasks.fetch();
-            var taskListView = new TaskListView({
+            var tlv = new taskListView({
                 eventManager: this.eventManager,
                 collection: this.model.tasks
             });
 
-            $("#tasks").html(taskListView.render().el);
+            $("#tasks").html(tlv.render().el);
             return this;
         },
 
@@ -46,5 +46,5 @@ define([
         }
 
     });
-    return ProjectView;
+    return projectView;
 });

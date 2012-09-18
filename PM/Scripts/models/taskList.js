@@ -1,13 +1,12 @@
 define([
   'backbone',
   'models/task'
-], function (Backbone, Task) {
-    TaskList = Backbone.Collection.extend({
-        model: Task,
+], function (backbone, task) {
+    var taskList = backbone.Collection.extend({
+        model: task,
         url: function () {
             return "/projects/" + this.parent.get("id") + "/tasks";
         }
     });
-
-    return TaskList;
+    return taskList;
 });

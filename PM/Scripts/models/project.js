@@ -1,11 +1,11 @@
 define([
   'backbone',
   'models/taskList'
-], function (Backbone, TaskList) {
-    Project = Backbone.Model.extend({
+], function (backbone, taskList) {
+    var project = backbone.Model.extend({
         defaults: {
             projectName: null,
-            tasks: new TaskList()
+            tasks: new taskList()
         },
 
         url: function () {
@@ -15,6 +15,5 @@ define([
             return "/projects";
         }
     });
-
-    return Project;
+    return project;
 });

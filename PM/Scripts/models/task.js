@@ -1,7 +1,7 @@
 define([
   'backbone'
-], function(Backbone){
-    Task = Backbone.Model.extend({
+], function(backbone) {
+    var task = backbone.Model.extend({
         defaults : {
             title: null,
             isCompleted: false,
@@ -10,6 +10,5 @@ define([
             project: null
         }
     });
-
-    return Task;
+    return task;
 });

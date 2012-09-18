@@ -3,17 +3,17 @@ define([
   'underscore', 
   'backbone',
   'appRouter'
-], function($, _, Backbone, AppRouter){
-    var App = {
+], function($, _, backbone, appRouter){
+    var app = {
         init : function() {
-        	var appRouter = new AppRouter();
-        	appRouter.init();
-        	Backbone.history.start();
+        	var router = new appRouter();
+        	router.init();
+        	backbone.history.start();
         }
     };
 
     return {
-        init: App.init
+        init: app.init
     };
 });
 

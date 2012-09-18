@@ -6,8 +6,8 @@ define([
   'models/project',
   'models/projectlist',
   'views/projectItemView'
-], function ($, _, Backbone, projectListTemplate, Project, ProjectList, ProjectItemView) {
-    ProjectListView = Backbone.View.extend({
+], function ($, _, backbone, projectListTemplate, project, projectList, projectItemView) {
+    var projectListView = backbone.View.extend({
         el: $('#projectList'),
         events: {
             "keyup #project_name": "detectNewProjectEnter",
@@ -24,9 +24,9 @@ define([
         render: function () {
             $('#project-list').html('');
             $(this.el).html(this.template);
-            this.collection.each(function (project) {
-                var itemView = new ProjectItemView({
-                    model: project,
+            this.collection.each(function (proj) {
+                var itemView = new projectItemView({
+                    model: proj,
                     eventManager: this.eventManager
                 });
                 $('#project-list').append(itemView.render().el);
@@ -41,16 +41,15 @@ define([
 
         addProject: function () {
             var nameField = $("#project_name");
-            var project = new Project({
+            var proj = new project({
                 projectName: nameField.val()
             });
-            project.save();
-            this.collection.add(project);
+            proj.save();
+            this.collection.add(proj);
             nameField.val("");
             nameField.focus();
         }
     });
-
-    return ProjectListView;
+    return projectListView;
 });
 

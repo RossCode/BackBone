@@ -5,15 +5,15 @@ define([
   'models/projectlist',
   'views/projectListView',
   'views/projectView'
-], function ($, _, Backbone, ProjectList, ProjectListView, ProjectView) {
-    AppRouter = Backbone.Router.extend({
+], function ($, _, backbone, projectList, projectListView, projectView) {
+    var appRouter = backbone.Router.extend({
         routes: {
             "": "list",
             "project/:id": "viewProject"
         },
 
         init: function () {
-            this.eventManager = _.extend({}, Backbone.Events);
+            this.eventManager = _.extend({}, backbone.Events);
         },
 
         navigateToList: function () {
@@ -21,8 +21,8 @@ define([
         },
 
         list: function () {
-            this.projects = new ProjectList();
-            this.projectListView = new ProjectListView({
+            this.projects = new projectList();
+            this.projectListView = new projectListView({
                 collection: this.projects,
                 eventManager: this.eventManager
             });
@@ -38,7 +38,7 @@ define([
             if (this.projects) {
                 this.project = this.projects.get(id);
                 if (this.projectView) this.projectView.close();
-                this.projectView = new ProjectView({
+                this.projectView = new projectView({
                     eventManager: this.eventManager,
                     model: this.project
                 });
@@ -49,6 +49,5 @@ define([
             }
         }
     });
-
-    return AppRouter;
+    return appRouter;
 });

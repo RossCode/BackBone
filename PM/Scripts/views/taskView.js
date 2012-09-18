@@ -2,10 +2,9 @@
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/task.html',
-  'models/task'
-], function ($, _, Backbone, taskTemplate, Task) {
-    var TaskView = Backbone.View.extend({
+  'text!templates/task.html'
+], function ($, _, backbone, taskTemplate) {
+    var taskView = backbone.View.extend({
         el: "<tr>",
 
         template: _.template(taskTemplate),
@@ -25,5 +24,5 @@
             return this;
         }
     });
-    return TaskView;
+    return taskView;
 });

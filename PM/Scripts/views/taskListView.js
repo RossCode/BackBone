@@ -7,8 +7,8 @@ define([
   'text!templates/noTasks.html',
   'models/task',
   'views/taskView'
-], function ($, _, Backbone, taskListTemplate, noTasks, Task, TaskView) {
-    var TaskListView = Backbone.View.extend({
+], function ($, _, backbone, taskListTemplate, noTasks, task, taskView) {
+    var taskListView = backbone.View.extend({
 
         initialize: function (options) {
             this.eventManager = options.eventManager;
@@ -20,9 +20,9 @@ define([
         render: function () {
             if (this.collection.length > 0) {
                 $(this.el).html(this.template);
-                this.collection.each(function (task) {
-                    var itemView = new TaskView({
-                        model: task,
+                this.collection.each(function (t) {
+                    var itemView = new taskView({
+                        model: t,
                         eventManager: this.eventManager
                     });
                     $('#taskTable').find('tbody').append(itemView.render().el);
@@ -34,5 +34,5 @@ define([
         }
     });
 
-    return TaskListView;
+    return taskListView;
 });
